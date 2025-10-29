@@ -18,7 +18,17 @@ import java.util.Map;
 //주로 클라이언트 쪽에서 전송하는 요청 데이터를 쿼리 파라미터(Query Parmeter 또는 Query String), 폼 데이터(form-data), x-www-form-urlencoded 형식으로 전송하면 이를 서버 쪽에서 전달받을 때 사용하는 애너테이션
 public class ManagerController {
     @PostMapping
-    public ResponseEntity postMember(@Valid ManagerDTO memberDto) {
-        return new ResponseEntity<ManagerDTO>(memberDto, HttpStatus.CREATED);
+    public ResponseEntity postManager(@Valid ManagerDTO managerDto) {
+        return new ResponseEntity<ManagerDTO>(managerDto, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity getManager(@PathVariable("manager-id") long managerId) {
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity deleteManager(@RequestBody long managerId) {
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
